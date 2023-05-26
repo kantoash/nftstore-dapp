@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .ClickBtn {
+        @apply shadow-md shadow-gray-400 text-white
+        bg-[#e32970] hover:bg-[#bd255f] px-4 py-2
+          rounded-xl cursor-pointer
+    }
+
+    .ImgInput {
+        @apply w-[100px] text-sm text-slate-500 file:mr-4 file:py-3 file:px-4 
+        file:rounded-l-xl file:border-0 file:text-sm file:font-semibold file:bg-[#394b61] file:text-gray-400 file:outline-none
+        hover:file:bg-[#303f51]
+    }
+
+    .createInput {
+      @apply w-full p-3 
+      text-gray-300 bg-[#394b61] bg-opacity-60 placeholder:text-gray-300 
+      border-0 rounded-xl
+      focus:outline-none focus:ring-0
+    }
+
+    .MintNowBtn {
+        @apply flex flex-row justify-center items-center
+        w-full text-white bg-[#e32970]
+        hover:bg-[#bd255f] py-2 px-5 rounded-full
+        drop-shadow-xl border border-transparent
+        hover:bg-transparent hover:text-[#e32970]
+        hover:border hover:border-[#bd255f]
+        focus:outline-none focus:ring mt-5
+    }
+}
