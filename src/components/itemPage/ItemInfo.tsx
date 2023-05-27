@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import ItemSellCard from "./ItemSellCard";
 import { useNavigate } from "react-router";
-import { NftDelete, truncate } from "../../services/cssblockchain";
+import { NftDelete, truncate, walletConnect } from "../../services/cssblockchain";
 import BidCard from "../BidCard";
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ const ItemInfo = () => {
   const navigate = useNavigate();
   const deleteItem = async () => {
     if (!wallet) {
-      toast("Metamask wallet not connected");
+   walletConnect()
     }
     if (!pageItem?.id) {
       return;

@@ -3,7 +3,7 @@ import useMintNftModal from "../../../hooks/MintNftModal";
 import { Nft } from "../../../typings";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { truncate } from "../../../services/cssblockchain";
+import { truncate, walletConnect } from "../../../services/cssblockchain";
 import { AiOutlineUser } from "react-icons/ai";
 
 interface NftRowProps {
@@ -13,7 +13,7 @@ interface NftRowProps {
 
 const NftRow: React.FC<NftRowProps> = ({ setSelectNft }) => {
   const MintModal = useMintNftModal();
-  const { nfts } = useSelector((state: RootState) => state.counter);
+  const { nfts, wallet } = useSelector((state: RootState) => state.counter);
   return (
     <div
       className="flex flex-row items-center overflow-x-scroll h-[500px] gap-5 px-5
@@ -51,11 +51,18 @@ const NftRow: React.FC<NftRowProps> = ({ setSelectNft }) => {
             </div>
           </div>
         ))
-      ) : (
+      ) : wallet ? (
         <div className="flex flex-col justify-center items-center gap-4 mx-auto">
           <h3 className="text-2xl">There Is No Nfts Mint Some</h3>
           <button className="ClickBtn" onClick={MintModal.onOpen}>
             Mint NFT
+          </button>
+        </div>
+      ) : (
+        <div className="flex flex-col justify-center items-center gap-4 mx-auto">
+          <h3 className="text-2xl">Connect wallet</h3>
+          <button className="ClickBtn" onClick={walletConnect}>
+            Connect
           </button>
         </div>
       )}

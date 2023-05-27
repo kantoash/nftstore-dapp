@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Nft } from "../../../typings";
-import { NftSellAuction, NftSellFixed, truncate } from "../../../services/cssblockchain";
+import { NftSellAuction, NftSellFixed, truncate, walletConnect } from "../../../services/cssblockchain";
 import { AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -19,7 +19,7 @@ const SellSelectedNft: React.FC<SellSelectedNftProps> = ({ selectNft, setSelectN
 
   const SellNftFunc = async () => {
     if (!wallet) {
-      toast("Metamask wallet Not created");
+     walletConnect()
       return;
     }
 
@@ -40,7 +40,7 @@ const SellSelectedNft: React.FC<SellSelectedNftProps> = ({ selectNft, setSelectN
 
   const AuctionNftFunc = async () => {    
     if (!wallet) {
-      toast("Metamask wallet Not created");
+      walletConnect()
       return;
     }
 

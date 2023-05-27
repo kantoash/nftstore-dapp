@@ -46,6 +46,7 @@ export const walletConnect = async () => {
     }
     const accounts = await ethereum.request({ method: "eth_requestAccounts" });
     store.dispatch(setWallet(accounts[0]));
+    window.location.reload()
   } catch (error) {
     reportError(error);
   }

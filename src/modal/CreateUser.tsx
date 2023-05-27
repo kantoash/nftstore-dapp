@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import ImageUpload from "../components/input/ImageUpload";
-import { userCreate, userUpdate } from "../services/cssblockchain";
+import { userCreate, userUpdate, walletConnect } from "../services/cssblockchain";
 import useCreateUserModal from "../hooks/CreateUserModal";
 
 const CreateUser = () => {
@@ -34,7 +34,7 @@ const CreateUser = () => {
   const createUserFunc = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!wallet) {
-      toast("Metamask wallet Not created");
+     walletConnect()
     }
     setIsLoading(true);
 

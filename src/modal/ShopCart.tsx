@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { buyAll } from "../services/cssblockchain";
+import { buyAll, walletConnect } from "../services/cssblockchain";
 
 const ShopCart = () => {
   const { isOpen, onClose } = useCartModal();
@@ -40,7 +40,7 @@ const ShopCart = () => {
 
   const BuyAll = async () => {
     if (!wallet) {
-      toast("Metamask wallet Not created");
+     walletConnect()
     }
     if (!totalEth || !products) {
       return;

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import useMintNftModal from "../hooks/MintNftModal";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { MintNftFunc } from "../services/cssblockchain";
+import { MintNftFunc, walletConnect } from "../services/cssblockchain";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import ImageUpload from "../components/input/ImageUpload";
@@ -33,7 +33,7 @@ const CreateNft = () => {
     event.preventDefault();
     setIsLoading(true);
     if (!wallet) {
-      toast("Metamask wallet Not created");
+     walletConnect()
     }
 
     if (!name || !description || !imageUrl || !attributesList) {

@@ -4,6 +4,7 @@ import {
   acceptBid,
   revokeBid,
   truncate,
+  walletConnect,
 } from "../services/cssblockchain";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
@@ -32,7 +33,7 @@ const BidCard: React.FC<BidProps> = ({ bid }) => {
 
   const RevokeBid = async () => {
     if (!wallet) {
-      toast("Metamask wallet not connected");
+     walletConnect()
     }
     if (!bid?.id || !pageItem?.id) {
       return;
@@ -52,7 +53,7 @@ const BidCard: React.FC<BidProps> = ({ bid }) => {
   // accept
   const AcceptBid = async () => {
     if (!wallet) {
-      toast("Metamask wallet not connected");
+      walletConnect()
     }
     if (!bid?.id || !pageItem?.id) {
       return;

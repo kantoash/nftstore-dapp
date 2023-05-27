@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { NftPurchaseFixed, formatDate } from "../../services/cssblockchain";
+import { NftPurchaseFixed, formatDate, walletConnect } from "../../services/cssblockchain";
 import CountDown from "../input/CountDown";
 import {
   AiOutlineShoppingCart,
@@ -25,7 +25,7 @@ const ItemSellCard = () => {
   
   const nftPurchase = async () => {
     if (!wallet) {
-      toast("Metamask wallet Not created");
+     walletConnect()
       return;
     }
 
@@ -46,7 +46,7 @@ const ItemSellCard = () => {
 
   const bidOffer = async () => {
     if (!wallet) {
-      toast("Metamask wallet Not created");
+      walletConnect()
       return;
     }
 
