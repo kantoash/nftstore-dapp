@@ -45,7 +45,7 @@ const UserContent = () => {
         <div className="flex flex-col space-y-10 justify-center mt-10 w-full ">
           <div className="space-y-2">
             <h3 className="text-2xl">Offered Bids</h3>
-            <div className="space-y-3 flex flex-col justify-center ">
+            <div className="space-y-3 flex flex-col items-center justify-center ">
               {offeredbids?.length &&
                 offeredbids.map((bid, index) => (
                   <BidUserCard bid={bid} key={index} />
@@ -54,7 +54,7 @@ const UserContent = () => {
           </div>
           <div className="space-y-2">
             <h3 className="text-2xl">Received bids</h3>
-            <div className="space-y-3 flex flex-col justify-center ">
+            <div className="space-y-3 flex flex-col items-center justify-center ">
               {receivedbids?.length &&
                 receivedbids.map((bid, index) => (
                   <BidUserCard bid={bid} key={index} />

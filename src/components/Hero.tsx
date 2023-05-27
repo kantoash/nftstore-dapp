@@ -2,8 +2,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import useMintNftModal from "../hooks/MintNftModal";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const Hero = () => {  
+  const { wallet } = useSelector((state: RootState) => state.counter)
   const MintModal  = useMintNftModal();  
   const navigate = useNavigate();
 
@@ -25,7 +28,9 @@ const Hero = () => {
 
         <div className="flex flex-row mt-5 cursor-pointer space-x-3">
           <button className="ClickBtn" onClick={MintModal.onOpen}>Mint NFT</button>
-          <button className="ClickBtn" onClick={() => navigate(`/sellNft`)} >Sell Nft</button>
+          {wallet && (
+            <button className="ClickBtn" onClick={() => navigate(`/sellNft`)} >Sell Nft</button>
+          )}
         </div>
       </div>
       <Carousel
