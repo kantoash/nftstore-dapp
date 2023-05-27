@@ -35,38 +35,35 @@ const UserContent = () => {
   }, [items, offeredbids, receivedbids]);
 
   return (
-    <div className="p-2">
-      {items?.length && (
+    <div className="p-5">
+      {action?.toString() !== "Activity" ? (
         <div className="mt-10 px-6 pb-20 grid grid-cols-1 m:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gap-y-12 place-items-center w-full xl:max-w-7xl mx-auto">
-          {items.map((item) => (
-            <ItemCard item={item} key={item?.id} />
-          ))}
+          {items &&
+            items.map((item) => <ItemCard item={item} key={item?.id} />)}
         </div>
-      )}
-      {action?.toString() === "Activity" && (
+      ) : (
         <div className="flex flex-col space-y-10 justify-center mt-10 w-full">
-        <div className="space-y-2">
-          <h3 className="text-2xl">Offered Bids</h3>
-          <div className="space-y-3 flex justify-center">
-            {offeredbids?.length &&
-              offeredbids.map((bid, index) => (
-                <BidUserCard bid={bid} key={index} />
-              ))}
+          <div className="space-y-2">
+            <h3 className="text-2xl">Offered Bids</h3>
+            <div className="space-y-3 flex justify-center">
+              {offeredbids?.length &&
+                offeredbids.map((bid, index) => (
+                  <BidUserCard bid={bid} key={index} />
+                ))}
+            </div>
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-2xl">Received bids</h3>
+            <div className="space-y-3 flex justify-center">
+              {receivedbids?.length &&
+                receivedbids.map((bid, index) => (
+                  <BidUserCard bid={bid} key={index} />
+                ))}
+            </div>
           </div>
         </div>
-        <div className="space-y-2">
-          <h3 className="text-2xl">Received bids</h3>
-          <div className="space-y-3 flex justify-center">
-            {receivedbids?.length &&
-              receivedbids.map((bid, index) => (
-                <BidUserCard bid={bid} key={index} />
-              ))}
-          </div>
-        </div>
-      </div>
-
       )}
-          </div>
+    </div>
   );
 };
 
