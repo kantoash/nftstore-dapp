@@ -3,7 +3,7 @@ import useMintNftModal from "../../../hooks/MintNftModal";
 import { Nft } from "../../../typings";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { truncate, walletConnect } from "../../../services/cssblockchain";
+import { truncate } from "../../../services/cssblockchain";
 import { AiOutlineUser } from "react-icons/ai";
 
 interface NftRowProps {
