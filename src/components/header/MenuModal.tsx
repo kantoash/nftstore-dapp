@@ -31,16 +31,13 @@ const MenuModal = () => {
         <div onClick={createNftModal.onOpen}>
           <MenuOption title="Mint Nft" />
         </div>
-
-        {wallet && (
-          <div className="flex flex-col items-center space-y-5 justify-center">
-            <div onClick={() => navigate(`/sellNft`)}>
+        <div onClick={() => navigate(`/sellNft`)}>
               <MenuOption title="Sell Nft" />
             </div>
-            <div onClick={() => navigate(`/user/${wallet}/Collected`)}>
-              <MenuOption title="Profile" />
-            </div>
-          </div>
+        {wallet && (
+           <div onClick={() => navigate(`/user/${wallet}/Collected`)}>
+           <MenuOption title="Profile" />
+         </div>
         )}
       </div>
     </motion.main>
