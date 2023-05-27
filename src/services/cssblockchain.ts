@@ -44,7 +44,7 @@ export const walletConnect = async () => {
     if (!ethereum) {
       toast("please install metamask");
     }
-    const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     store.dispatch(setWallet(accounts[0]));
     window.location.reload()
   } catch (error) {
@@ -57,11 +57,11 @@ export const isWallectConnected = async () => {
     if (!ethereum) toast("please install metamask");
     const accounts = await ethereum.request({ method: "eth_accounts" });
 
-    window.ethereum.on("chainChanged", () => {
+    window.ethereum.on('chainChanged', () => {
       window.location.reload();
     });
 
-    window.ethereum.on("accountsChanged", async () => {
+    window.ethereum.on('accountsChanged', async () => {
       store.dispatch(setWallet(accounts[0]));
       await isWallectConnected();
     });
@@ -71,7 +71,6 @@ export const isWallectConnected = async () => {
     } else {
       store.dispatch(setWallet(""));
       toast("please connect wallet.");
-      console.log("No accounts found");
     }
   } catch (error) {
     reportError(error);

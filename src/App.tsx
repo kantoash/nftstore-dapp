@@ -16,10 +16,10 @@ import useCartModal from "./hooks/CartModal";
 import ShopCart from "./modal/ShopCart";
 
 function App() {
-  const { wallet, cartItems } = useSelector((state: RootState) => state.counter);
+  const { cartItems } = useSelector((state: RootState) => state.counter);
   useEffect(() => {
     isWallectConnected();
-  }, [wallet]);
+  }, []);
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   useEffect(() => {
     if (cartItems[0]) {
