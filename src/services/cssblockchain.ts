@@ -44,9 +44,11 @@ export const walletConnect = async () => {
     if (!ethereum) {
       toast("please install metamask");
     }
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    store.dispatch(setWallet(accounts[0]));
-    window.location.reload()
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const accountAddress = await signer.getAddress();
+    store.dispatch(setWallet(accountAddress));
   } catch (error) {
     reportError(error);
   }
@@ -55,19 +57,22 @@ export const walletConnect = async () => {
 export const isWallectConnected = async () => {
   try {
     if (!ethereum) toast("please install metamask");
-    const accounts = await ethereum.request({ method: "eth_accounts" });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const accountAddress = await signer.getAddress();
 
     window.ethereum.on('chainChanged', () => {
       window.location.reload();
     });
 
     window.ethereum.on('accountsChanged', async () => {
-      store.dispatch(setWallet(accounts[0]));
+      store.dispatch(setWallet(accountAddress));
       await isWallectConnected();
     });
 
-    if (accounts.length) {
-      store.dispatch(setWallet(accounts[0]));
+    if (accountAddress) {
+      store.dispatch(setWallet(accountAddress));
     } else {
       store.dispatch(setWallet(""));
       toast("please connect wallet.");
