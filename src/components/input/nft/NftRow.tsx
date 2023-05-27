@@ -19,13 +19,27 @@ const NftRow: React.FC<NftRowProps> = ({ setSelectNft }) => {
       className="flex flex-row items-center overflow-x-scroll h-[500px] gap-5 px-5
     "
     >
-      {nfts.length ? (
+      {!wallet ? (
+        <div className="flex flex-col justify-center items-center gap-4 mx-auto">
+          <h3 className="text-2xl">Connect wallet</h3>
+          <button className="ClickBtn" onClick={walletConnect}>
+            Connect
+          </button>
+        </div>
+      ) : !nfts ? (
+        <div className="flex flex-col justify-center items-center gap-4 mx-auto">
+          <h3 className="text-2xl">There Is No Nfts Mint Some</h3>
+          <button className="ClickBtn" onClick={MintModal.onOpen}>
+            Mint NFT
+          </button>
+        </div>
+      ) : (
         nfts.map((nft, index) => (
           <div
             onClick={() => setSelectNft(nft)}
             key={index}
-            className="aspect-square h-full w-[300px] shrink-0 flex flex-col 
-          justify-between cursor-pointer overflow-hidden rounded-xl"
+            className="aspect-square h-full w-[300px] shrink-0 flex flex-col
+        justify-between cursor-pointer overflow-hidden rounded-xl"
           >
             <div className="h-[300px] shrink-0">
               <img
@@ -51,20 +65,6 @@ const NftRow: React.FC<NftRowProps> = ({ setSelectNft }) => {
             </div>
           </div>
         ))
-      ) : wallet ? (
-        <div className="flex flex-col justify-center items-center gap-4 mx-auto">
-          <h3 className="text-2xl">There Is No Nfts Mint Some</h3>
-          <button className="ClickBtn" onClick={MintModal.onOpen}>
-            Mint NFT
-          </button>
-        </div>
-      ) : (
-        <div className="flex flex-col justify-center items-center gap-4 mx-auto">
-          <h3 className="text-2xl">Connect wallet</h3>
-          <button className="ClickBtn" onClick={walletConnect}>
-            Connect
-          </button>
-        </div>
       )}
     </div>
   );
