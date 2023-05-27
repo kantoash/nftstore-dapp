@@ -36,9 +36,9 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/SellNft" element={<SellNft />} />
+        <Route path="/sellNft" element={<SellNft />} />
         <Route path="/itemPage/:itemId" element={<NftPage />} />
-        <Route path="/User/:userAddress/:action" element={<UserPage />} />
+        <Route path="/user/:userAddress/:action" element={<UserPage />} />
       </Routes>
     </BrowserRouter>
   );

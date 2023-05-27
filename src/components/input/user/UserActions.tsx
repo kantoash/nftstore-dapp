@@ -8,13 +8,13 @@ const UserActions = () => {
   return (
     <div className="text-gray-800 text-lg flex items-center space-x-5 p-5">
       <div
-        onClick={() => navigate(`/User/${userAddress}/Collected`)}
+        onClick={() => navigate(`/user/${userAddress}/Collected`)}
         className="cursor-pointer"
       >
         Collected
       </div>
       <div
-        onClick={() => navigate(`/User/${userAddress}/Activity`)}
+        onClick={() => navigate(`/user/${userAddress}/Activity`)}
         className="cursor-pointer"
       >
         Activity

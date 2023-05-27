@@ -25,7 +25,7 @@ const Hero = () => {
 
         <div className="flex flex-row mt-5 cursor-pointer space-x-3">
           <button className="ClickBtn" onClick={MintModal.onOpen}>Mint NFT</button>
-          <button className="ClickBtn" onClick={() => navigate(`/SellNft`)} >Sell Nft</button>
+          <button className="ClickBtn" onClick={() => navigate(`/sellNft`)} >Sell Nft</button>
         </div>
       </div>
       <Carousel

@@ -4,11 +4,13 @@ import { MdOutlineEdit } from "react-icons/md";
 import useCreateAvatarModal from "../../../hooks/CreateUserModal";
 import UserBackImg from "./UserBackImg";
 import UserProfileImg from "./UserProfileImg";
+import { useParams } from "react-router";
 
 const UserInfo = () => {
   const { user, wallet } = useSelector((state: RootState) => state.counter);
+  const { userAddress } = useParams();
   const createAvatarModal = useCreateAvatarModal();
-
+  
   return (
     <div className="flex flex-col">
       <div className="h-[200px] relative ">
@@ -26,7 +28,7 @@ const UserInfo = () => {
           </div>
           <p className="text-sm">{user?.description || "user description"}</p>
         </div>
-        {wallet.toLowerCase() === user?.userAddress.toLowerCase() && (
+        {wallet.toLowerCase() === userAddress?.toLowerCase() && (
           <div
             onClick={createAvatarModal.onOpen}
             className="border border-gray-400 rounded-full p-1"

@@ -45,7 +45,7 @@ const CreateUser = () => {
       if (!user?.isUserCreate) {
         await userCreate(name, username, description, backImage, profileUrl).then(() => {
           toast('User Create Success')
-          onClose();
+          handleClose();
         }).catch(() => {
           toast('User Create Error')
         })
@@ -53,7 +53,7 @@ const CreateUser = () => {
         const userId = user.userId;
         await userUpdate(userId, name, username, description, backImage, profileUrl).then(() => {
           toast('User Update Success')
-          onClose();
+          handleClose();
         }).catch(() => {
           toast('User Update Error')
         })

@@ -11,7 +11,7 @@ interface NftRowProps {
   setSelectNft: (val: Nft) => void;
 }
 
-const NftRow: React.FC<NftRowProps> = ({ selectNft, setSelectNft }) => {
+const NftRow: React.FC<NftRowProps> = ({ setSelectNft }) => {
   const MintModal = useMintNftModal();
   const { nfts } = useSelector((state: RootState) => state.counter);
   return (

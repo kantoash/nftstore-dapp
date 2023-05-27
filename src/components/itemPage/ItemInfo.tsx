@@ -57,7 +57,7 @@ const ItemInfo = () => {
           <h3>Owned by</h3>
           {user?.isUserCreate ? (
             <span
-              onClick={() => navigate(`/User/${user?.userAddress}/Collected`)}
+              onClick={() => navigate(`/user/${user?.userAddress}/Collected`)}
               className="text-blue-500 cursor-pointer"
             >
               {user?.userName}
